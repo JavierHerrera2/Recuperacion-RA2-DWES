@@ -34,7 +34,14 @@ public class Main {
                     11. Ver pedidos
                     0. Salir""");
             System.out.print("Opción: ");
-            opcion = Integer.parseInt(sc.nextLine().trim());
+            String linea = sc.nextLine().trim();
+            if (linea.isEmpty()) { opcion = -1; continue; }
+            try {
+                opcion = Integer.parseInt(linea);
+            } catch (NumberFormatException e) {
+                System.out.println("Opción no válida.");
+                opcion = -1;
+            }
 
             switch (opcion) {
                 case 1  -> servicio.listarProductos().forEach(System.out::println);
@@ -51,7 +58,7 @@ public class Main {
                 });
                 case 10 -> crearPedido();
                 case 11 -> servicio.listarPedidos().forEach(System.out::println);
-                case 0  -> System.out.println("¡Hasta luego!");
+                case 0  -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción no válida");
             }
         } while (opcion != 0);

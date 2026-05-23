@@ -77,7 +77,7 @@ public class TiendaService {
     public List<String> nombresOrdenadosPorPrecio() {
         return repoProductos.listarTodos().stream()
                 .sorted((a, b) -> Double.compare(a.getPrecio(), b.getPrecio()))
-                .map(Producto::getNombre)
+                .map(p -> String.format("%-20s %.2f€", p.getNombre(), p.getPrecio()))
                 .toList();
     }
 

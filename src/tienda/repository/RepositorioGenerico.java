@@ -32,8 +32,4 @@ public class RepositorioGenerico<T> {
                 .filter(criterio)
                 .toList();
     }
-
-    public int tamanio() {
-        return datos.size();
-    }
 }
